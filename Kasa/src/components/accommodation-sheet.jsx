@@ -1,8 +1,8 @@
-import { useState } from "react";
 import { useParams, Navigate } from "react-router-dom";
 
 import accommodations from "../backend/logements.json";
 import CollapsibleSection from "./collapsible-section";
+import Carousel from "./carousel";
 
 function Accommodation() {
   const { id } = useParams();
@@ -13,7 +13,7 @@ function Accommodation() {
   } else {
     return (
       <section className="accommodation">
-        <img src={`${process.env.PUBLIC_URL}/images/accommodation-1.png`} alt={accommodationToDisplay.title} />
+        <Carousel slides={accommodationToDisplay.pictures} />
 
         <div className="left-section">
           <h2>{accommodationToDisplay.title}</h2>
