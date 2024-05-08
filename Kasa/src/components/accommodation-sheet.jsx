@@ -13,7 +13,7 @@ function Accommodation() {
   } else {
     return (
       <section className="accommodation">
-        <Carousel slides={accommodationToDisplay.pictures} />
+        <Carousel slides={accommodationToDisplay.pictures} timer={4000} />
 
         <div className="left-section">
           <h2>{accommodationToDisplay.title}</h2>

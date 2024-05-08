@@ -1,35 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
-function Carousel({ slides }) {
+function Carousel({ slides, timer }) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const autoSwitch = useRef(null);
 
   function nextSlide() {
+    clearInterval(autoSwitch.current);
     setCurrentSlide((currentSlide + 1) % slides.length);
+    const currentImage = document.querySelector(".slide");
+    currentImage.classList.add("fade-in");
+    setTimeout(() => {
+      currentImage.classList.remove("fade-in");
+    }, 1001);
   }
 
   function prevSlide() {
+    clearInterval(autoSwitch.current);
     setCurrentSlide((currentSlide - 1 + slides.length) % slides.length);
+    const currentImage = document.querySelector(".slide");
+    currentImage.classList.add("fade-in");
+    setTimeout(() => {
+      currentImage.classList.remove("fade-in");
+    }, 1001);
   }
 
-  //   function nextSlide() {
-  //     if (currentSlide === slides.length - 1) {
-  //       setCurrentSlide(0);
-  //     } else {
-  //       setCurrentSlide(currentSlide + 1);
-  //     }
-  //   }
-
-  //   function prevSlide() {
-  //     if (currentSlide === 0) {
-  //       setCurrentSlide(slides.length - 1);
-  //     } else {
-  //       setCurrentSlide(currentSlide - 1);
-  //     }
-  //   }
+  useEffect(() => {
+    autoSwitch.current = setInterval(nextSlide, timer);
+    return () => clearInterval(autoSwitch.current);
+  }, [nextSlide]);
 
   return (
     <div className="carousel">
-      <img className="slide" src={slides[currentSlide]} alt={`Image${currentSlide + 1}`} />
+      <img className="slide fade-in" src={slides[currentSlide]} alt={`Image${currentSlide + 1}`} />
       <img onClick={prevSlide} className="previous-icon" src={`${process.env.PUBLIC_URL}/images/arrow-left.png`} alt="Icône précédent" />
       <img onClick={nextSlide} className="next-icon" src={`${process.env.PUBLIC_URL}/images/arrow-right.png`} alt="Icône suivant" />
       <p>
