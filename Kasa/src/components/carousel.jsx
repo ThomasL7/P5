@@ -25,18 +25,24 @@ function Carousel({ slides, timer }) {
   }
 
   useEffect(() => {
-    autoSwitch.current = setInterval(nextSlide, timer);
+    if (slides.length > 1) {
+      autoSwitch.current = setInterval(nextSlide, timer);
+    }
     return () => clearInterval(autoSwitch.current);
   }, [nextSlide]);
 
   return (
     <div className="carousel">
       <img className="slide fade-in" src={slides[currentSlide]} alt={`Image${currentSlide + 1}`} />
-      <img onClick={prevSlide} className="previous-icon" src={`${process.env.PUBLIC_URL}/images/arrow-left.png`} alt="Icône précédent" />
-      <img onClick={nextSlide} className="next-icon" src={`${process.env.PUBLIC_URL}/images/arrow-right.png`} alt="Icône suivant" />
-      <p>
-        {currentSlide + 1}/{slides.length}
-      </p>
+      {slides.length > 1 && (
+        <div>
+          <img onClick={prevSlide} className="previous-icon" src={`${process.env.PUBLIC_URL}/images/arrow-left.png`} alt="Icône précédent" />
+          <img onClick={nextSlide} className="next-icon" src={`${process.env.PUBLIC_URL}/images/arrow-right.png`} alt="Icône suivant" />
+          <p>
+            {currentSlide + 1}/{slides.length}
+          </p>
+        </div>
+      )}
     </div>
   );
 }
