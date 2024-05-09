@@ -8,9 +8,11 @@ function CollapsibleSection({ title, content }) {
   }
 
   return (
-    <div>
-      {title}
-      <img onClick={toggle} src={`${process.env.PUBLIC_URL}/images/${isOpen ? "arrow-down.png" : "arrow-up.png"}`} alt="Icône pour développer la section" />
+    <div className="collapsible-section">
+      <div className="title-section">
+        {title}
+        <img onClick={toggle} className="arrow" src={`${process.env.PUBLIC_URL}/images/${isOpen ? "arrow-down.png" : "arrow-up.png"}`} alt="Icône pour développer la section" />
+      </div>
       {isOpen && content}
     </div>
   );

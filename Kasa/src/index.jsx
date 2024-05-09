@@ -15,15 +15,17 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Router>
-      <Header />
-      <main>
-        <Routes>
-          <Route path="" element={<Home />} />
-          <Route path="accommodation/:id" element={<Accommodation />} />
-          <Route path="about" element={<About />} />
-          <Route path="*" element={<NoUrl />} />
-        </Routes>
-      </main>
+      <div className="main-container">
+        <Header />
+        <main>
+          <Routes>
+            <Route path="" element={<Home />} />
+            <Route path="accommodation/:id" element={<Accommodation />} />
+            <Route path="about" element={<About />} />
+            <Route path="*" element={<NoUrl />} />
+          </Routes>
+        </main>
+      </div>
       <Footer />
     </Router>
   </React.StrictMode>

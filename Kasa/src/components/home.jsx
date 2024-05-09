@@ -6,6 +6,7 @@ function Home() {
   return (
     <section className="home">
       <div className="title-banner">
+        <div className="black-filter"></div>
         <h2>Chez vous, partout et ailleurs</h2>
         <img src={`${process.env.PUBLIC_URL}/images/image-home.png`} alt="Photo d'un paysage" />
       </div>
@@ -13,8 +14,8 @@ function Home() {
         {accommodations.map((accommodation, index) => (
           <Link key={index} to={`accommodation/${accommodation.id}`}>
             <article>
-              <img src={`${accommodation.cover}`} alt={`${accommodation.title}`} />
               <h3>{accommodation.title}</h3>
+              <img src={`${accommodation.cover}`} alt={`${accommodation.title}`} />
             </article>
           </Link>
         ))}
