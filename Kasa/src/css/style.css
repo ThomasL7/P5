@@ -315,6 +315,14 @@ header li:last-child {
     line-height: 25.67px;
   }
 }
+.no-url p br {
+  display: none;
+}
+@media (max-width: 600px) {
+  .no-url p br {
+    display: block;
+  }
+}
 .no-url .link-back-home {
   color: black;
   margin-top: 139px;
