@@ -396,6 +396,7 @@ header li:last-child {
   .collapsible-section h2, .collapsible-section h3 {
     margin-left: 10px;
     font-size: 13px;
+    line-height: 1;
   }
 }
 .collapsible-section .arrow {
@@ -456,19 +457,19 @@ header li:last-child {
 }
 @media (max-width: 600px) {
   .rotate-180-open {
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.2s ease-in-out;
     transform: rotate(180deg) translateY(-2.28px);
   }
 }
 
 .rotate-180-close {
   transition: transform 0.2s ease-in-out;
-  transform: rotate(0deg) translateY(0);
+  transform: rotate(0deg);
 }
 @media (max-width: 600px) {
   .rotate-180-close {
-    transition: transform 0.5s ease-in-out;
-    transform: rotate(0deg) translateY(0px);
+    transition: transform 0.2s ease-in-out;
+    transform: rotate(0deg);
   }
 }
 
