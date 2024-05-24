@@ -18,7 +18,7 @@ function Accommodation() {
 
     return (
       <section className="accommodation">
-        <Carousel slides={accommodationToDisplay.pictures} timer={5000} animationDuration={600} />
+        <Carousel slides={accommodationToDisplay.pictures} timer={5} animationDuration={0.6} />
         <div className="section-spreader">
           <div className="left-section">
             <h2>{accommodationToDisplay.title}</h2>
