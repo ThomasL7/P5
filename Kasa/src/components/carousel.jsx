@@ -63,7 +63,6 @@ function Carousel({ slides, timer, animationDuration }) {
     <div className="carousel" ref={carouselRef}>
       <img loading="lazy" style={styleA} className="slide slide-a" src={slides[slideA]} alt={`Image ${slideA + 1}`} />
       <img loading="lazy" style={styleB} className="slide slide-b" src={slides[slideB]} alt={`Image ${slideB + 1}`} />
-      {/* <img loading="lazy" style={styleB} className="slide slide-b" src={slides[slideB]} alt={`Image ${slideB + 1}`} /> */}
       {slides.length > 1 && (
         <>
           <svg onClick={prevSlide} className="previous-icon" fill="white" aria-label="Icône précédent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 80">
