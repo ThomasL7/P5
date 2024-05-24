@@ -9,13 +9,8 @@ function Carousel({ slides, timer, animationDuration }) {
   const carouselRef = useRef(null);
   const animationTimer = useRef(null);
   const [animated, setAnimated] = useState(false);
-
-  function activeSlide(classToAnimate, previousOrNext) {
-    const currentImage = carouselRef.current.querySelector(classToAnimate);
-    requestAnimationFrame(() => {
-      currentImage.classList.add(`${previousOrNext}-animation`);
-    });
-  }
+  const [styleA, setStyleA] = useState({});
+  const [styleB, setStyleB] = useState({});
 
   function nextSlide() {
     if (!animated) {
@@ -24,21 +19,14 @@ function Carousel({ slides, timer, animationDuration }) {
       setCount(newCount);
       const newCurrentSlide = (currentSlide + 1) % slides.length;
       setCurrentSlide(newCurrentSlide);
-      const slidesList = carouselRef.current.querySelectorAll(".slide");
-      slidesList.forEach((slide) => {
-        slide.classList.remove("previous-forward-animation");
-        slide.classList.remove("next-forward-animation");
-        slide.classList.remove("previous-backward-animation");
-        slide.classList.remove("next-backward-animation");
-      });
       if (newCount % 2 === 0) {
         setSlideA(newCurrentSlide);
-        activeSlide(".slide-a", "next-forward");
-        activeSlide(".slide-b", "previous-forward");
+        setStyleA({ transform: "translateX(0%)", animation: "next-anim 0.6s ease-in-out" });
+        setStyleB({ transform: "translateX(-100%)", animation: "prev-anim 0.6s ease-in-out" });
       } else {
         setSlideB(newCurrentSlide);
-        activeSlide(".slide-b", "next-forward");
-        activeSlide(".slide-a", "previous-forward");
+        setStyleA({ transform: "translateX(-100%)", animation: "prev-anim 0.6s ease-in-out" });
+        setStyleB({ transform: "translateX(0%)", animation: "next-anim 0.6s ease-in-out" });
       }
       animationTimer.current = setTimeout(() => setAnimated(false), animationDuration);
     }
@@ -51,40 +39,31 @@ function Carousel({ slides, timer, animationDuration }) {
       setCount(newCount);
       const newCurrentSlide = (currentSlide - 1 + slides.length) % slides.length;
       setCurrentSlide(newCurrentSlide);
-      const slidesList = carouselRef.current.querySelectorAll(".slide");
-      slidesList.forEach((slide) => {
-        slide.classList.remove("previous-forward-animation");
-        slide.classList.remove("next-forward-animation");
-        slide.classList.remove("previous-backward-animation");
-        slide.classList.remove("next-backward-animation");
-      });
       if (newCount % 2 === 0) {
         setSlideA(newCurrentSlide);
-        activeSlide(".slide-a", "previous-backward");
-        activeSlide(".slide-b", "next-backward");
+        setStyleA({ transform: "translateX(0%)", animation: "prev-anim-rev 0.6s ease-in-out" });
+        setStyleB({ transform: "translateX(+100%)", animation: "next-anim-rev 0.6s ease-in-out" });
       } else {
         setSlideB(newCurrentSlide);
-        activeSlide(".slide-b", "previous-backward");
-        activeSlide(".slide-a", "next-backward");
+        setStyleA({ transform: "translateX(+100%)", animation: "next-anim-rev 0.6s ease-in-out" });
+        setStyleB({ transform: "translateX(0%)", animation: "prev-anim-rev 0.6s ease-in-out" });
       }
       animationTimer.current = setTimeout(() => setAnimated(false), animationDuration);
     }
   }
 
   useEffect(() => {
-    if (slides.length > 1) {
-      if (!animated) {
-        timerSwitch.current = setInterval(nextSlide, timer);
-
-        return () => clearInterval(timerSwitch.current);
-      }
+    if (slides.length > 1 && !animated) {
+      timerSwitch.current = setInterval(nextSlide, timer);
+      return () => clearInterval(timerSwitch.current);
     }
   }, [nextSlide, prevSlide]);
 
   return (
     <div className="carousel" ref={carouselRef}>
-      <img loading="lazy" className="slide slide-a" src={slides[slideA]} alt={`Image ${slideA + 1}`} />
-      <img loading="lazy" className="slide slide-b" src={slides[slideB]} alt={`Image ${slideB + 1}`} />
+      <img loading="lazy" style={styleA} className="slide slide-a" src={slides[slideA]} alt={`Image ${slideA + 1}`} />
+      <img loading="lazy" style={styleB} className="slide slide-b" src={slides[slideB]} alt={`Image ${slideB + 1}`} />
+      {/* <img loading="lazy" style={styleB} className="slide slide-b" src={slides[slideB]} alt={`Image ${slideB + 1}`} /> */}
       {slides.length > 1 && (
         <>
           <svg onClick={prevSlide} className="previous-icon" fill="white" aria-label="Icône précédent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 80">
