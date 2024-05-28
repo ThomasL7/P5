@@ -10,11 +10,13 @@ import Home from "./components/home.jsx";
 import Accommodation from "./components/accommodation-sheet.jsx";
 import About from "./components/about.jsx";
 import NoUrl from "./components/no-url.jsx";
+import ScrollToTop from "./components/scroll-to-top.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Router>
+      <ScrollToTop />
       <div className="main-container">
         <Header />
         <main>
