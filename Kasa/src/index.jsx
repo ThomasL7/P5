@@ -2,33 +2,24 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import "./css/style.css";
+import "./styles/reset.sass";
+import "./styles/index.sass";
 
-import Header from "./components/header.jsx";
-import Footer from "./components/footer.jsx";
-import Home from "./components/home.jsx";
-import Accommodation from "./components/accommodation-sheet.jsx";
-import About from "./components/about.jsx";
-import NoUrl from "./components/no-url.jsx";
-import ScrollToTop from "./components/scroll-to-top.jsx";
+import Home from "./pages/home.jsx";
+import Accommodation from "./pages/accommodation-sheet.jsx";
+import About from "./pages/about.jsx";
+import NoUrl from "./pages/no-url.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Router>
-      <ScrollToTop />
-      <div className="main-container">
-        <Header />
-        <main>
-          <Routes>
-            <Route path="" element={<Home />} />
-            <Route path="accommodation/:id" element={<Accommodation />} />
-            <Route path="about" element={<About />} />
-            <Route path="*" element={<NoUrl />} />
-          </Routes>
-        </main>
-      </div>
-      <Footer />
+      <Routes>
+        <Route path="" element={<Home />} />
+        <Route path="accommodation/:id" element={<Accommodation />} />
+        <Route path="about" element={<About />} />
+        <Route path="*" element={<NoUrl />} />
+      </Routes>
     </Router>
   </React.StrictMode>
 );

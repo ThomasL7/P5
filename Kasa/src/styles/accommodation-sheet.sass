@@ -1,0 +1,143 @@
+@import mixins
+@import variables
+
+/* Spreading left & right sections
+.section-spreader
+    display: flex
+    justify-content: space-between
+    @include responsive
+        flex-direction: column
+
+/* Left section
+.left-section
+    h2
+        margin-top: 6px
+        font-size: 36px
+        font-weight: 500
+        line-height: 51.34px
+        color: $color-primary
+        @include responsive
+            font-size: 18px
+            line-height: 25.67px
+            margin-top: 0px
+            margin-bottom: 5px
+
+    p
+        font-size: 18px
+        line-height: 25.67px
+        margin-bottom: 20px
+        @include responsive
+            font-size: 14px
+            line-height: 19.96px
+            margin-bottom: 10px
+
+    ul
+        display: flex
+        flex-wrap: wrap
+        gap: 10px 0px
+        margin-bottom: 24px
+        @include responsive
+            margin-bottom: 0px
+
+    li
+        min-width: 115px
+        height: 25px
+        border-radius: 10px
+        background: $color-primary
+        display: flex
+        justify-content: center
+        align-items: center
+        font-size: 14px
+        font-weight: 700
+        line-height: 19.96px
+        margin-right: 10px
+        color: white
+        padding: 0px 10px
+        box-sizing: border-box
+        @include responsive
+            min-width: 84px
+            height: 18px
+            font-size: 10px
+            line-height: 14.26px
+
+        &:last-child
+            margin-right: 0px
+
+/* Right section
+.right-section
+    display: flex
+    flex-direction: column
+    align-items: end
+    @include responsive
+        align-items: start
+        flex-direction: row-reverse
+        justify-content: space-between
+        align-items: center
+        margin-top: 16px
+        margin-bottom: 13px
+
+    .author-section
+        display: flex
+        align-items: center
+        width: max-content
+
+        img
+            object-fit: cover
+            height: 64px
+            width: 64px
+            border-radius: 50%
+            @include responsive
+                width: 32px
+                height: 32px
+
+    p
+        font-size: 18px
+        font-weight: 500
+        line-height: 25.67px
+        color: $color-primary
+        margin-right: 10px
+        text-align: right
+        @include responsive
+            font-size: 12px
+            line-height: 17.11px
+
+    .rating
+        margin-top: 21px
+        width: max-content
+        @include responsive
+            margin-bottom: 0px
+            margin-top: 0px
+
+    img
+        width: 24.75px
+        height: 24px
+        margin-left: 9.25px
+        @include responsive
+            width: 13.41px
+            height: 13px
+            margin-left: 4px
+
+    img:first-child
+        margin-left: 0px
+
+/* Collapsible part
+.collapsible-part
+    display: flex
+    justify-content: space-between
+    @include responsive
+        flex-direction: column
+
+    .collapsible-section
+        width: 46.77%
+        margin-bottom: 50px
+        display: flex
+        flex-direction: column
+        @include responsive
+            width: 100%
+            margin-bottom: 20px
+
+            &:last-child
+                margin-bottom: 27px
+
+    ul, p
+        flex-grow: 1

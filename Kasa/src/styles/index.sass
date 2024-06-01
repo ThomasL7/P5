@@ -1,0 +1,51 @@
+@import fonts
+@import mixins
+@import variables
+
+// General
+html
+    font-family: "Montserrat"
+    font-size: 24px
+    font-weight: 500
+
+body
+    display: flex
+    flex-direction: column
+    min-width: 375px
+    min-height: 100vh
+
+#root
+    display: flex
+    flex-direction: column
+    flex: 1
+
+.main-container
+    display: flex
+    flex-direction: column
+    flex: 1
+    max-width: 1280px
+    width: 100%
+    margin: 0px auto
+    padding: 0px 20px
+    box-sizing: border-box
+    @include responsive
+        padding: 0px 20px
+        box-sizing: border-box
+
+main
+    display: flex
+    flex-direction: column
+
+h2
+    font-size: 48px
+    font-weight: 700
+    line-height: 68.45px
+    @include responsive
+        font-size: 24px
+        font-weight: 700
+        line-height: 24px
+
+h3
+    font-size: 18px
+    font-weight: 700
+    line-height: 25.67px

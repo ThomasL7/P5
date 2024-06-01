@@ -1,0 +1,93 @@
+@import mixins
+@import variables
+
+.accommodation .carousel
+    margin-top: 50px
+    margin-bottom: 24px
+    height: 415px
+    border-radius: 25px
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    overflow: hidden
+    @include responsive
+        height: 255px
+        border-radius: 10px
+        margin-top: 27px
+        margin-bottom: 15px
+
+    .previous-icon
+        position: absolute
+        left: 0px
+        width: 46.68
+        height: 79.2px
+        margin-left: 23.36px
+        cursor: pointer
+        z-index: 2
+        @include responsive
+            width: 11.67
+            height: 19.8px
+            margin-left: 5.84px
+
+    .next-icon
+        position: absolute
+        right: 0px
+        width: 46.68
+        height: 79.2px
+        margin-right: 23.36px
+        cursor: pointer
+        transform: rotate(180deg)
+        z-index: 2
+        @include responsive
+            width: 11.67
+            height: 19.8px
+            margin-right: 5.84px
+
+    p
+        color: white
+        font-size: 18px
+        line-height: 25.67px
+        position: absolute
+        bottom: 0px
+        margin-bottom: 24.92px
+        z-index: 2
+        @include responsive
+            display: none
+
+    .slide
+        height: 100%
+        width: 100%
+        object-fit: cover
+        position: absolute
+        @include responsive
+            border-radius: 10px
+
+/* Animations
+@keyframes prev-anim
+    0%
+        transform: translateX(0)
+
+    100%
+        transform: translateX(-100%)
+
+@keyframes next-anim
+    0%
+        transform: translateX(+100%)
+
+    100%
+        transform: translateX(0)
+
+@keyframes prev-anim-rev
+    0%
+        transform: translateX(-100%)
+
+    100%
+        transform: translateX(0%)
+
+@keyframes next-anim-rev
+    0%
+        transform: translateX(0%)
+
+    100%
+        transform: translateX(+100%)

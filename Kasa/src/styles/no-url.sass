@@ -1,0 +1,50 @@
+@import mixins
+@import variables
+
+.no-url
+    display: flex
+    flex-direction: column
+    justify-content: space-evenly
+    align-items: center
+    flex: 1
+    flex-grow: 1
+
+    h2
+        font-size: 288px
+        color: $color-primary
+        line-height: 263px
+        margin-top: 139px
+        @include responsive
+            font-size: 96px
+            color: $color-primary
+            line-height: 99px
+            margin-top: 136.9px
+            margin-top: 113px
+
+    p
+        margin-top: 139px
+        color: $color-primary
+        font-size: 36px
+        text-align: center
+        @include responsive
+            margin-top: 113px
+            font-size: 18px
+            line-height: 25.67px
+
+        br
+            display: none
+            @include responsive
+                display: block
+
+    .link-back-home
+        color: black
+        margin-top: 139px
+        margin-bottom: 139px
+        font-size: 18px
+        line-height: 25.67px
+        text-decoration: underline
+        @include responsive
+            margin-top: 113px
+            margin-bottom: 113px
+            font-size: 14px
+            line-height: 19.96px
